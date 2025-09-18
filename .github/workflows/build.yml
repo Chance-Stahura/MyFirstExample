@@ -1,0 +1,19 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ "main", "ci/cd" ]
+  pull_request:
+    branches: [ "main", "ci/cd" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: sudo apt-get install g++ make
+      - name: Build
+        run: make
+      - name: Run tests
+        run: ./your_test_binary   # replace with your actual test command
